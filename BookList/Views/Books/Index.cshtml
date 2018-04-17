@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BookList.Models.Book>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<H3>Book List</H3>
+<hr />
+
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary">Create New</a>
+</p>
+
+
+<div class="form-border">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.Name)
+            </th>
+        </tr>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(b => book.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@book.ID" class="btn btn-sm btn-success">Edit</a>
+                    <a asp-action="Details" asp-route-id="@book.ID" class="btn btn-sm btn-primary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@book.ID" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
